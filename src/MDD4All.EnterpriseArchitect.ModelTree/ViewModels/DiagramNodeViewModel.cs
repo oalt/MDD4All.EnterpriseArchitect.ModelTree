@@ -70,5 +70,19 @@ namespace MDD4All.EnterpriseArchitect.ModelTree.ViewModels
             set
             { }
         }
+
+        public override RepositoryObjectViewModel Descriptor
+        {
+            get
+            {
+                return new RepositoryObjectViewModel
+                {
+                    ConnectionString = Repository.ConnectionString,
+                    GUID = _diagram.DiagramGUID,
+                    Name = _diagram.Name,
+                    ObjectType = ObjectType.otDiagram
+                };
+            }
+        }
     }
 }

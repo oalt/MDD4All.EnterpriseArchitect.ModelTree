@@ -101,5 +101,19 @@ namespace MDD4All.EnterpriseArchitect.ModelTree.ViewModels
         }
 
         public override string Icon { set; get; } = "📁";
+
+        public override RepositoryObjectViewModel Descriptor
+        {
+            get
+            {
+                return new RepositoryObjectViewModel
+                {
+                    ConnectionString = Repository.ConnectionString,
+                    GUID = _package.PackageGUID,
+                    Name = _package.Name,
+                    ObjectType = ObjectType.otPackage
+                };
+            }
+        }
     }
 }

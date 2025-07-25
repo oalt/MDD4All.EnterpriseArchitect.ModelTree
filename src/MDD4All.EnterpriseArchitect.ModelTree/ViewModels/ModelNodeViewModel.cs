@@ -76,6 +76,8 @@ namespace MDD4All.EnterpriseArchitect.ModelTree.ViewModels
 
         public abstract string Icon { get; set; }
 
+        public abstract RepositoryObjectViewModel Descriptor { get; }
+
         public EAAPI.Repository Repository { get; private set; }
     }
 }

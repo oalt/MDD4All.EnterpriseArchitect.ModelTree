@@ -2,6 +2,8 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using MDD4All.EAFacade.DataModels.Contracts;
+
 #if EA_FACADE
 using EAAPI = MDD4All.EAFacade.DataModels.Contracts;
 using MDD4All.EAFacade.Manipulations;
@@ -171,6 +173,20 @@ namespace MDD4All.EnterpriseArchitect.ModelTree.ViewModels
 
             set
             { }
+        }
+
+        public override RepositoryObjectViewModel Descriptor
+        {
+            get
+            {
+                return new RepositoryObjectViewModel
+                {
+                    ConnectionString = Repository.ConnectionString,
+                    GUID = _element.ElementGUID,
+                    Name = _element.Name,
+                    ObjectType = ObjectType.otElement
+                };
+            }
         }
     }
 }

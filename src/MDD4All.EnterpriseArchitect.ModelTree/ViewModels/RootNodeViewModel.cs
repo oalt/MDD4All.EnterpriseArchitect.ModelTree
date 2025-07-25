@@ -1,4 +1,5 @@
-﻿using MDD4All.UI.DataModels.Tree;
+﻿using MDD4All.EAFacade.DataModels.Contracts;
+using MDD4All.UI.DataModels.Tree;
 using System.Collections.ObjectModel;
 #if EA_FACADE
 using EAAPI = MDD4All.EAFacade.DataModels.Contracts;
@@ -15,7 +16,8 @@ namespace MDD4All.EnterpriseArchitect.ModelTree.ViewModels
     internal class RootNodeViewModel : ModelNodeViewModel
     {
         public RootNodeViewModel(string connectionString,
-                                 ITree tree, ModelNodeViewModel parentNode,
+                                 ITree tree, 
+                                 ModelNodeViewModel parentNode,
                                  EAAPI.Repository repository) : base(tree, parentNode, repository)  
         {
             IsExpanded = true;
@@ -32,5 +34,19 @@ namespace MDD4All.EnterpriseArchitect.ModelTree.ViewModels
         }
 
         public override string Icon { set; get; } = "EALOGO";
+
+        public override RepositoryObjectViewModel Descriptor
+        {
+            get
+            {
+                return new RepositoryObjectViewModel
+                {
+                    ConnectionString = Repository.ConnectionString,
+                    GUID = "",
+                    Name = _title,
+                    ObjectType = ObjectType.otRepository
+                };
+            }
+        }
     }
 }

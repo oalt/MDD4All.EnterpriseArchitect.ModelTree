@@ -20,9 +20,16 @@ namespace MDD4All.EnterpriseArchitect.ModelTree.ViewModels
     {
         private EAAPI.Repository _repository;
 
-        public RepositoryTreeViewModel(EAAPI.Repository repository) 
+        public RepositoryTreeViewModel(EAAPI.Repository repository,
+                                       bool includeElements = true,
+                                       bool includeEmbeddedElements = true,
+                                       bool includeDiagrams = true) 
         {
             _repository = repository;
+
+            IncludeElements = includeElements;
+            IncludeEmbeddedElements = includeEmbeddedElements;
+            IncludeDiagrams = includeDiagrams;
 
             RootNodeViewModel rootNodeViewModel = new RootNodeViewModel(repository.ConnectionString, this, null, _repository);
 
@@ -48,6 +55,26 @@ namespace MDD4All.EnterpriseArchitect.ModelTree.ViewModels
         }
 
         public ITreeNode SelectedNode { get; set; }
+
+        public RepositoryObjectViewModel SelectedRepositoryObject
+        {
+            get
+            {
+                RepositoryObjectViewModel result = null;
+
+                if (SelectedNode != null)
+                {
+                    ModelNodeViewModel modelNodeViewModel = SelectedNode as ModelNodeViewModel;
+
+                    if (modelNodeViewModel != null)
+                    {
+                        result = modelNodeViewModel.Descriptor;
+                    }
+                }
+
+                return result;
+            }
+        }
 
         public bool IncludeDiagrams { get; set; } = true;
 
