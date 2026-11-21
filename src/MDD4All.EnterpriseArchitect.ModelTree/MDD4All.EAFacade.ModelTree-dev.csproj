@@ -1,0 +1,29 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <AssemblyName>MDD4All.EAFacade.ModelTree</AssemblyName>
+    <RootNamespace>MDD4All.EAFacade.ModelTree</RootNamespace>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>MDD4All_Github.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DefineConstants>TRACE;EA_FACADE</DefineConstants>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DefineConstants>TRACE;EA_FACADE</DefineConstants>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MvvmLightLibsStd10" Version="5.4.1.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\MDD4All.EAFacade.DataModels.Contracts\src\MDD4All.EAFacade.DataModels.Contracts\MDD4All.EAFacade.DataModels.Contracts-dev.csproj" />
+    <ProjectReference Include="..\..\..\MDD4All.EnterpriseArchitect.Manipulations\src\MDD4All.EA.Manipulations\MDD4All.EAFacade.Manipulations-dev.csproj" />
+    <ProjectReference Include="..\..\..\MDD4All.UI.DataModels\src\MDD4All.UI.DataModels\MDD4All.UI.DataModels-dev.csproj" />
+  </ItemGroup>
+
+</Project>
